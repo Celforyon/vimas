@@ -1,0 +1,50 @@
+vimas.txt   Utility to auto load sessions with tpope-obsession
+
+Author: Alexis Pereda
+License: GPLv3
+
+CONTENTS                                                               *vimas*
+
+1. Introduction  |vimas-introduction|
+2. How it works  |vimas-howitworks|
+3. Usage         |vimas-usage|
+4. Requirements  |vimas-requirements|
+5. Variables     |vimas-variables|
+7. License       |vimas-license|
+
+==============================================================================
+Introduction                                              *vimas-introduction*
+
+This plugin manages sessions (using tpope-obsession) for each project.
+
+==============================================================================
+How it works                                                *vimas-howitworks*
+
+Each session is stored in ~/.vim/sessions/PATH where PATH is the project path.
+If the file exists, it is automatically loaded only if vim is launched with
+no file argument. Else, the file session is replaced by the new session.
+If the file does not exist, nothing is done. A session can be created with the
+command `:VimAS`.
+
+==============================================================================
+Usage                                                            *vimas-usage*
+
+
+
+VIMAS COMMAND                                                          *VimAs*
+
+
+==============================================================================
+Requirements                                              *vimas-requirements*
+
+- tpope-obsession
+
+==============================================================================
+Variables                                                    *vimas-variables*
+
+Currently, none.
+
+==============================================================================
+License                                                        *vimas-license*
+
+This software is licensed under the GPL v3 license
