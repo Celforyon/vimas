@@ -13,6 +13,16 @@ cp vimas/plugin/vimas.vim ~/.vim/plugin
 ```
 (optionally you can also install the docs and generate the tags with `:helptags`)
 
+# Configuration
+
+See `:h vimas`
+Generally, you will want to add
+```
+call vimas#vimas()
+```
+at the end of your `.vimrc` to automatically manage sessions.
+Else, see the different commands that are provided.
+
 # Update
 
 ## Vundle
@@ -23,4 +33,4 @@ Simply redo manual installation steps
 
 # Usage
 
-see `:h vimas`
+See `:h vimas`

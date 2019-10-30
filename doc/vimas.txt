@@ -6,7 +6,6 @@ License: GPLv3
 CONTENTS                                                               *vimas*
 
 1. Introduction  |vimas-introduction|
-2. How it works  |vimas-howitworks|
 3. Usage         |vimas-usage|
 4. Requirements  |vimas-requirements|
 5. Variables     |vimas-variables|
@@ -15,24 +14,47 @@ CONTENTS                                                               *vimas*
 ==============================================================================
 Introduction                                              *vimas-introduction*
 
-This plugin manages sessions (using tpope-obsession) for each project.
-
-==============================================================================
-How it works                                                *vimas-howitworks*
-
-Each session is stored in ~/.vim/sessions/PATH where PATH is the project path.
-If the file exists, it is automatically loaded only if vim is launched with
-no file argument. Else, the file session is replaced by the new session.
-If the file does not exist, nothing is done. A session can be created with the
-command `:VimAS`.
+This plugin manages sessions (using tpope-obsession) for each project based on
+the current working directory of vim and *not* stored in the project directory
+to improve usage with versioning systems.
 
 ==============================================================================
 Usage                                                            *vimas-usage*
 
+To enable Automatic Sessions, you need to add `call vimas#vimas()` in your
+vimrc file or to run `:AS` after opening vim.
 
+Note: the call inside the vimrc file will replace any existing session when
+launching vim with at least one file specified.
 
-VIMAS COMMAND                                                          *VimAs*
+VIMAS#VIMAS FUNCTION                                          *vimas#vimas()*
 
+This function enables automatic session for the current directory, or toggles
+it if called as `vimas#vimas(1)`.
+
+It also returns 1 if it caused the loading of a session file.
+It enables to do things like: >
+if vimas#vimas()
+  " post actions
+endif
+<
+
+AS COMMAND                                                                *AS*
+
+`:AS` calls `vimas#vimas(<bang>)`.
+See `vimas#vimas()`.
+
+ASCREATE                                                            *ASCreate*
+
+`:ASCreate` creates a session for the current directory.
+
+ASREMOVE                                                            *ASRemove*
+
+`:ASRemove` removes an existing session for the current directory.
+
+ASLOAD                                                                *ASLoad*
+
+`:ASLoad` loads an existing session for the current directory.
 
 ==============================================================================
 Requirements                                              *vimas-requirements*
