@@ -64,7 +64,34 @@ Requirements                                              *vimas-requirements*
 ==============================================================================
 Variables                                                    *vimas-variables*
 
-Currently, none.
+- |g:vimas_blacklist_dirs|
+The list of directory for which sessions should not be managed.
+
+Default value: >
+let g:vimas_blacklist_dirs = [
+	\ '~',
+	\ '/',
+	\ '/bin/.*',
+	\ '/boot/.*',
+	\ '/dev/.*',
+	\ '/etc/.*',
+	\ '/lib/.*',
+	\ '/lib32/.*',
+	\ '/lib64/.*',
+	\ '/libx32/.*',
+	\ '/lost+found/.*',
+	\ '/media/.*',
+	\ '/mnt/.*',
+	\ '/proc/.*',
+	\ '/run/.*',
+	\ '/sbin/.*',
+	\ '/srv/.*',
+	\ '/sys/.*',
+	\ '/tmp/.*',
+	\ '/usr/.*',
+	\ '/var/.*'
+  \ ]
+<
 
 ==============================================================================
 License                                                        *vimas-license*

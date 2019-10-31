@@ -1,23 +1,68 @@
 "{{{"""""""""""" Variables """"""""""""""""""""""""""""
 
 let s:vimas_autocmd_createsession = 0
+let s:vimas_sessions_dir = fnamemodify('~', ':p').'.vim/sessions/'
+
+let g:vimas_blacklist_dirs = [
+	\ '~',
+	\ '/',
+	\ '/bin/.*',
+	\ '/boot/.*',
+	\ '/dev/.*',
+	\ '/etc/.*',
+	\ '/lib/.*',
+	\ '/lib32/.*',
+	\ '/lib64/.*',
+	\ '/libx32/.*',
+	\ '/lost+found/.*',
+	\ '/media/.*',
+	\ '/mnt/.*',
+	\ '/proc/.*',
+	\ '/run/.*',
+	\ '/sbin/.*',
+	\ '/srv/.*',
+	\ '/sys/.*',
+	\ '/tmp/.*',
+	\ '/usr/.*',
+	\ '/var/.*'
+	\ ]
 
 "}}}"""""""""""""""""""""""""""""""""""""""""""""""""""
 "{{{"""""""""""" Functions """"""""""""""""""""""""""""
 
 "{{{
+function! vimas#mksessionname(f)
+	let l:session = s:vimas_sessions_dir.substitute(a:f, '/', '%', 'g')
+	return substitute(l:session, '%$', '', '')
+endfunction
+"}}}
+"{{{
 function! vimas#session()
-	let l:home = fnamemodify('~', ':p')
-	let l:sdir = l:home.'.vim/sessions/'
-	call mkdir(l:sdir, 'p')
-	return l:sdir.substitute(getcwd(), '/', '%', 'g')
+	return vimas#mksessionname(getcwd())
+endfunction
+"}}}
+"{{{
+function! vimas#blacklisted(session)
+	for l:dir in g:vimas_blacklist_dirs
+		let l:fdir = vimas#mksessionname(fnamemodify(l:dir, ':p'))
+		if match(a:session.'%', '^'.l:fdir.'$') != -1
+			return 1
+		endif
+	endfor
+	return 0
 endfunction
 "}}}
 "{{{
 function! vimas#createsession(session)
+	if vimas#blacklisted(a:session)
+		return
+	endif
+
 	let l:session = fnameescape(a:session)
+
 	if exists(':Obsession')
-		execute "Obsession ".l:session
+		silent execute "Obsession ".l:session
+		echom "session: ".a:session
 	else
 		let s:vimas_autocmd_createsession = 1
 	endif
@@ -27,13 +72,18 @@ endfunction
 function! vimas#rmsession(session)
 	if filereadable(a:session)
 		if exists(':Obsession')
-			Obsession!
+			silent Obsession!
+			echom "session deleted"
 		endif
 	endif
 endfunction
 "}}}
 "{{{
 function! vimas#loadsession(session)
+	if vimas#blacklisted(a:session)
+		return 0
+	endif
+
 	let l:session = fnameescape(a:session)
 	if filereadable(a:session)
 		if argv() == []
