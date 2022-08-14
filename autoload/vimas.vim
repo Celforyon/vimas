@@ -1,5 +1,7 @@
 "{{{"""""""""""" Variables """"""""""""""""""""""""""""
 
+if !exists('g:vimas_sessions_dir') | let g:vimas_sessions_dir = fnamemodify('~', ':p').'.vim/sessions/' | endif
+
 let s:vimas_autocmd_createsession = 0
 
 let g:vimas_blacklist_dirs = [

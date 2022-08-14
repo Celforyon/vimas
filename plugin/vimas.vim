@@ -12,9 +12,6 @@ endif
 let g:loaded_vimas = 1
 
 "{{{"""""""""""" Variables """"""""""""""""""""""""""""
-
-if !exists('g:vimas_sessions_dir') | let g:vimas_sessions_dir = fnamemodify('~', ':p').'.vim/sessions/' | endif
-
 "}}}"""""""""""""""""""""""""""""""""""""""""""""""""""
 "{{{"""""""""""" Highlights """""""""""""""""""""""""""
 "}}}"""""""""""""""""""""""""""""""""""""""""""""""""""
