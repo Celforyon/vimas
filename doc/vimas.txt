@@ -64,6 +64,10 @@ Requirements                                              *vimas-requirements*
 ==============================================================================
 Variables                                                    *vimas-variables*
 
+- |g:vimas_sessions_dir|
+The directory where sessions are stored.
+Default value: ~/.vim/sessions
+
 - |g:vimas_blacklist_dirs|
 The list of directory for which sessions should not be managed.
 

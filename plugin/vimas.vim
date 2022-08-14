@@ -1,6 +1,6 @@
 " vimas.vim
 " Maintainer: Alexis Pereda
-" Version: 1
+" Version: 1.1
 
 if exists('g:loaded_vimas')
 	finish
@@ -12,6 +12,9 @@ endif
 let g:loaded_vimas = 1
 
 "{{{"""""""""""" Variables """"""""""""""""""""""""""""
+
+if !exists('g:vimas_sessions_dir') | let g:vimas_sessions_dir = fnamemodify('~', ':p').'.vim/sessions/' | endif
+
 "}}}"""""""""""""""""""""""""""""""""""""""""""""""""""
 "{{{"""""""""""" Highlights """""""""""""""""""""""""""
 "}}}"""""""""""""""""""""""""""""""""""""""""""""""""""
