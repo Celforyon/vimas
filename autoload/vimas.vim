@@ -1,7 +1,6 @@
 "{{{"""""""""""" Variables """"""""""""""""""""""""""""
 
 let s:vimas_autocmd_createsession = 0
-let s:vimas_sessions_dir = g:vimas_sessions_dir
 
 let g:vimas_blacklist_dirs = [
 	\ '~',
@@ -32,7 +31,7 @@ let g:vimas_blacklist_dirs = [
 
 "{{{
 function! vimas#mksessionname(f)
-	let l:session = s:vimas_sessions_dir.substitute(a:f, '/', '%', 'g')
+	let l:session = g:vimas_sessions_dir.substitute(a:f, '/', '%', 'g')
 	return substitute(l:session, '%$', '', '')
 endfunction
 "}}}
