@@ -5,7 +5,7 @@ if !exists('g:vimas_sessions_dir') | let g:vimas_sessions_dir = fnamemodify('~',
 let s:vimas_autocmd_createsession = 0
 
 let g:vimas_blacklist_dirs = [
-	\ '~',
+	\ expand('~'),
 	\ '/',
 	\ '/bin/.*',
 	\ '/boot/.*',
